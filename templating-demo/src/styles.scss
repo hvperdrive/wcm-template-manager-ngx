@@ -1,0 +1,41 @@
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+
+.mat-toolbar {
+    margin-bottom: 20px;
+    .fill-remaining-toolbar-space {
+        flex: 1 1 auto;
+    }
+}
+
+.nav {
+    float: right;
+}
+
+.mat-card {
+    margin-bottom: 20px;
+    
+    .mat-card-header {
+        height: auto;
+        min-height: 40px;
+
+        .mat-card-header-text {
+            height: auto;
+            min-height: 40px;
+
+            .mat-card-title {
+                font-size: 18px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    &.small-card {
+        max-width: 250px;
+        margin-left: 20px;
+        float: left;
+
+        &:first-child{
+            margin-left: 0;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+<div *ngIf="data">
+    <md-card>
+      <md-card-header>
+        <md-card-title>{{data.fields.title}}</md-card-title>
+      </md-card-header>
+      <!-- <img md-card-image src="http://localhost:4000/api/1.0.0/{{data.fields.banner.cropped.asset.url}}"> -->
+      <md-card-content>
+        <div [innerHTML]="data.fields.body"></div>
+      </md-card-content>
+    </md-card>
+    <h1></h1>
+</div>

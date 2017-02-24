@@ -1,0 +1,13 @@
+<div *ngIf="data">
+    <md-card class="small-card" *ngFor="let item of data.data">
+      <md-card-header>
+        <md-card-title>{{item.fields.title}}</md-card-title>
+      </md-card-header>
+      <md-card-content>
+        <div [innerHTML]="item.fields.title"></div>
+      </md-card-content>
+      <md-card-actions>
+          <a md-button routerLink="/en/blogpost/{{item.uuid}}" color="accent">Go to the blog</a>
+      </md-card-actions>
+    </md-card>
+</div>
