@@ -1,4 +1,4 @@
-import {Component, ViewContainerRef, ComponentFactoryResolver, OnChanges, OnDestroy, Input } from '@angular/core';
+import { Component, ViewContainerRef, ComponentFactoryResolver, OnChanges, OnDestroy, Input } from '@angular/core';
 import { DynamicLoadService } from './dynamic-load.service';
 
 @Component({
@@ -18,6 +18,7 @@ export class DynamicLoadComponent implements OnChanges, OnDestroy {
     ) {}
 
     ngOnChanges() {
+        console.log(this.dynamicLoadService.getComponents());
         let selectedComponent: string;
 
         if (this.componentData.hasOwnProperty('pageContent')) {

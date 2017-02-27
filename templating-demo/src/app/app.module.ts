@@ -23,17 +23,19 @@ import { ContentResolver } from './services/content.resolver';
 import { PageService } from './services/page.service';
 import { PageResolver } from './services/page.resolver';
 
+const dynamicComponents = [
+    BlogComponent,
+    BlogpostComponent,
+    FAQComponent,
+    ViewComponent
+];
+
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        DynamicLoadModule.forRoot([
-            BlogComponent,
-            BlogpostComponent,
-            FAQComponent,
-            ViewComponent
-        ]),
+        DynamicLoadModule.forRoot(dynamicComponents),
         RouterModule.forRoot([
             {
                 path: '',
@@ -64,11 +66,8 @@ import { PageResolver } from './services/page.resolver';
     declarations: [
         AppComponent,
         HomeComponent,
-        BlogComponent,
-        BlogpostComponent,
-        FAQComponent,
-        ViewComponent,
-        DataComponent
+        DataComponent,
+        ...dynamicComponents
     ],
     bootstrap: [
         AppComponent
