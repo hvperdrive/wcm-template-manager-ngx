@@ -3,11 +3,11 @@ import { Dynamic } from '../../dynamic/dynamic';
 
 @Component({
   selector: 'app-view',
-  templateUrl: './view.component.html'
+  templateUrl: './faq-view.component.html'
 })
-export class ViewComponent implements OnInit {
+export class FAQViewComponent implements OnInit {
     static selectComponent: Dynamic = {
-        selector: 'view'
+        selector: 'view-faq'
     };
     @Input()
     data: any;

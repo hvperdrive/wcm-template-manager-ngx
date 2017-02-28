@@ -1,0 +1,10 @@
+<div *ngIf="data">
+    <md-card class="small-card" *ngFor="let item of data.data">
+      <md-card-header>
+        <md-card-title>{{item.fields.question}}</md-card-title>
+      </md-card-header>
+      <md-card-content>
+        <div [innerHTML]="item.fields.answer"></div>
+      </md-card-content>
+    </md-card>
+</div>

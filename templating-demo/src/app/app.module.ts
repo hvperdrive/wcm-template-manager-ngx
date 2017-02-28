@@ -15,7 +15,8 @@ import { HomeComponent } from './components/home/home.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogpostComponent } from './components/blogpost/blogpost.component';
 import { FAQComponent } from './components/faq/faq.component';
-import { ViewComponent } from './components/view/view.component';
+import { BlogViewComponent } from './components/blog-view/blog-view.component';
+import { FAQViewComponent } from './components/faq-view/faq-view.component';
 
 import { ContentService } from './services/content.service';
 import { ContentResolver } from './services/content.resolver';
@@ -27,7 +28,8 @@ const dynamicComponents = [
     BlogComponent,
     BlogpostComponent,
     FAQComponent,
-    ViewComponent
+    BlogViewComponent,
+    FAQViewComponent
 ];
 
 @NgModule({
