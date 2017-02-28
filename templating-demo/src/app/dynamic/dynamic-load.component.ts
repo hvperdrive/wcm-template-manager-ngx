@@ -18,30 +18,42 @@ export class DynamicLoadComponent implements OnChanges, OnDestroy {
     ) {}
 
     ngOnChanges() {
-        console.log(this.dynamicLoadService.getComponents());
-        let selectedComponent: string;
+        if (typeof this.currentComponent !== 'undefined') { this.currentComponent.destroy(); }
+
+        const   availableComponents = this.dynamicLoadService.getComponents(),
+                selectors = [],
+                selectedComponent = '';
 
         if (this.componentData.hasOwnProperty('pageContent')) {
-            if (this.componentData.uuid === '5e2754be-ff90-47e8-8cfe-1ed67693e574') {
-                selectedComponent = 'blog';
-            } else if (this.componentData.uuid === '77be3fc4-9165-4e98-aaa3-a1cb451433af') {
-                selectedComponent = 'faq';
-            }
+            selectors.push('page');
+            selectors.push('page-' + this.componentData.title.toLowerCase());
+            selectors.push('page-' + this.componentData.uuid);
         } else if (this.componentData.hasOwnProperty('viewReference')) {
-            selectedComponent = 'view';
+            selectors.push('view');
+            selectors.push('view-' + this.componentData.title.toLowerCase());
+            selectors.push('view-' + this.componentData.viewReference);
         } else if (this.componentData.meta.hasOwnProperty('contentType')) {
-            selectedComponent = 'blogpost';
+            selectors.push('content');
+            selectors.push('content-' + this.componentData.meta.slug);
+            selectors.push('content-' + this.componentData.meta.contentType);
         } else {
             console.log('nothing to process');
             return false;
         }
 
-        if (selectedComponent !== '') {
-            if (typeof this.currentComponent !== 'undefined') { this.currentComponent.destroy(); }
+        if (selectors.length > 0) {
+            let component;
+            for (let i = 0; i < availableComponents.length; i++) {
+                if (typeof availableComponents[i].selectComponent !== 'undefined') {
+                    const componentSelector = availableComponents[i].selectComponent.selector;
+                    if ( typeof selectors.find((x) => x.toLowerCase().indexOf(componentSelector) > -1) !== 'undefined') {
+                        component = availableComponents[i];
+                        break;
+                    }
+                }
+            }
 
-            const   components = this.dynamicLoadService.getComponents(),
-                    component: any = components.find((x) => x.name.toLowerCase().indexOf(selectedComponent) > -1),
-                    compFactory = this.cfr.resolveComponentFactory(component);
+            const compFactory = this.cfr.resolveComponentFactory(component);
 
             this.currentComponent = this.vcr.createComponent(compFactory);
             this.currentComponent.instance.data = this.componentData;
