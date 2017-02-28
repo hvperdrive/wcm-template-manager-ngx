@@ -11,6 +11,7 @@ import 'hammerjs';
 import { AppComponent } from './app.component';
 import { DataComponent } from './components/data/data.component';
 
+// Import all the templates which need to be loaded dynamically. We need to make sure they are compiled in case AoT is used
 import { HomeComponent } from './components/home/home.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogpostComponent } from './components/blogpost/blogpost.component';
@@ -24,6 +25,7 @@ import { ContentResolver } from './services/content.resolver';
 import { PageService } from './services/page.service';
 import { PageResolver } from './services/page.resolver';
 
+// Bundle the components in an array, just for convenience
 const dynamicComponents = [
     BlogComponent,
     BlogpostComponent,
@@ -37,7 +39,9 @@ const dynamicComponents = [
         BrowserModule,
         FormsModule,
         HttpModule,
+        // Add the components to the module for dynamic loading
         DynamicLoadModule.forRoot(dynamicComponents),
+        // In the routing, point paths which need dynamic templating to the DataComponent
         RouterModule.forRoot([
             {
                 path: '',
@@ -51,6 +55,8 @@ const dynamicComponents = [
             {
                 path: ':lang/:page',
                 component: DataComponent,
+                // Make sure the data for the page is resolved and included in the route,
+                // this data is needed for deciding which template to use
                 resolve: {
                     data: PageResolver
                 }
@@ -69,6 +75,7 @@ const dynamicComponents = [
         AppComponent,
         HomeComponent,
         DataComponent,
+        // Also add the components to the declarations
         ...dynamicComponents
     ],
     bootstrap: [

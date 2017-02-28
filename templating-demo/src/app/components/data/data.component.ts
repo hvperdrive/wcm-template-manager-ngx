@@ -5,6 +5,8 @@ import 'rxjs/add/operator/do';
 
 @Component({
     selector: 'app-data',
+    // We need this component to point the route to
+    // This component will then get the resolved data and pass it to our 'dynamic-load' component
     template: '<app-dynamic-load [componentData]="data"></app-dynamic-load>',
 })
 export class DataComponent implements OnInit {
