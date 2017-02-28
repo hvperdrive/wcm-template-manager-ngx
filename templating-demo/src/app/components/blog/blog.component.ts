@@ -19,7 +19,5 @@ export class BlogComponent implements OnInit {
 
     title = 'This is the BlogComponent';
 
-    ngOnInit() {
-        console.log(this.data);
-    }
+    ngOnInit() {}
 }

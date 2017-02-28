@@ -1,25 +1,32 @@
-<md-card class="small-card">
-  <md-card-header>
-    <md-card-title>Blog</md-card-title>
-  </md-card-header>
-  <img md-card-image src="assets/img/blog.jpg">
-  <md-card-content>
-    <p>A blog (a truncation of the expression weblog) is a discussion or informational website published on the World Wide Web consisting of discrete, often informal diary-style text entries ("posts").</p>
-  </md-card-content>
-  <md-card-actions>
-      <a md-button routerLink="/en/5e2754be-ff90-47e8-8cfe-1ed67693e574" color="accent">Go to the blog</a>
-  </md-card-actions>
-</md-card>
+<div *ngIf="data">
+    <md-card>
+        <img src="http://localhost:4000/api/1.0.0/{{data.pageContent.homepage_banner.data.fields.image.cropped.asset.url}}" alt="pageContent.homepage_banner.data.fields.image.title" md-card-image>
 
-<md-card class="small-card">
-  <md-card-header>
-    <md-card-title>FAQ</md-card-title>
-  </md-card-header>
-  <img md-card-image src="assets/img/blog.jpg">
-  <md-card-content>
-    <p>Frequently asked questions (FAQ) or Questions and Answers (Q&amp;A), are listed questions and answers, all supposed to be commonly asked in some context, and pertaining to a particular topic. The format is commonly used on email mailing lists and other online forums, where certain common questions tend to recur.</p>
-  </md-card-content>
-  <md-card-actions>
-      <a md-button routerLink="/en/77be3fc4-9165-4e98-aaa3-a1cb451433af" color="accent">Go to the FAQ</a>
-  </md-card-actions>
-</md-card>
+        <md-card>
+            <md-card-header>
+                <md-card-title>Blog</md-card-title>
+            </md-card-header>
+            <md-card-content>
+                <p>A blog (a truncation of the expression weblog) is a discussion or informational website published on the World Wide Web consisting of discrete, often informal diary-style text entries ("posts").</p>
+
+                <!-- The 'dynamic-load' component can also be used to render views dynamically -->
+                <app-dynamic-load [componentData]="data.viewsContent.last_three_blogposts"></app-dynamic-load>
+            </md-card-content>
+            <md-card-actions>
+                <a md-button routerLink="/en/5e2754be-ff90-47e8-8cfe-1ed67693e574" color="accent">Go to the blog</a>
+            </md-card-actions>
+        </md-card>
+
+        <md-card>
+            <md-card-header>
+                <md-card-title>FAQ</md-card-title>
+            </md-card-header>
+            <md-card-content>
+                <p>Frequently asked questions (FAQ) or Questions and Answers (Q&amp;A), are listed questions and answers, all supposed to be commonly asked in some context, and pertaining to a particular topic. The format is commonly used on email mailing lists and other online forums, where certain common questions tend to recur.</p>
+            </md-card-content>
+            <md-card-actions>
+                <a md-button routerLink="/en/77be3fc4-9165-4e98-aaa3-a1cb451433af" color="accent">Go to the FAQ</a>
+            </md-card-actions>
+        </md-card>
+    </md-card>
+</div>

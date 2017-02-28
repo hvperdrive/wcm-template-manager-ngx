@@ -1,13 +1,16 @@
-<div *ngIf="data">
-    <md-card class="small-card" *ngFor="let item of data.data">
-      <md-card-header>
-        <md-card-title>{{item.fields.title}}</md-card-title>
-      </md-card-header>
-      <md-card-content>
-        <div [innerHTML]="item.fields.title"></div>
-      </md-card-content>
-      <md-card-actions>
-          <a md-button routerLink="/en/blogpost/{{item.uuid}}" color="accent">Go to the blog</a>
-      </md-card-actions>
+<div class="tiles" *ngIf="data">
+    <md-card class="tile" *ngFor="let item of data.data">
+        <img md-card-image src="http://localhost:4000/api/1.0.0/{{item.fields.banner.cropped.asset.url}}">
+        <md-card-header>
+            <md-card-title>
+                {{item.fields.title}}
+            </md-card-title>
+        </md-card-header>
+        <md-card-content>
+            <div [innerHTML]="item.fields.summary"></div>
+        </md-card-content>
+        <md-card-actions>
+            <a md-button routerLink="/en/blogpost/{{item.uuid}}" color="primary">Read more</a>
+        </md-card-actions>
     </md-card>
 </div>

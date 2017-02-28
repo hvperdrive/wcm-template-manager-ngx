@@ -17,5 +17,7 @@ export class BlogpostComponent implements OnInit {
     @Input()
     data: any;
 
-    ngOnInit() {}
+    ngOnInit() {
+        console.log(this.data);
+    }
 }
