@@ -58,27 +58,25 @@ export class DynamicLoadComponent implements OnChanges, OnDestroy {
         // This selector needs to be provided through the 'Dynamic' class (see dynamic.ts)
         if (selectors.length > 0) {
             let component;
-            // We loop through all components in the array we got from the 'dynamicLoadService' and stop when we have a match
-            for (let i = 0; i < availableComponents.length; i++) {
-                // If the component has no selector, it's no use cross-referencing it
-                if (typeof availableComponents[i].selectComponent !== 'undefined') {
-                    const componentSelector = availableComponents[i].selectComponent.selector;
-                    // If the selector matches one of the above created options,
-                    // store the component in the component variable and break the for loop
-                    if ( typeof selectors.find((x) => x.toLowerCase().indexOf(componentSelector) > -1) !== 'undefined') {
-                        component = availableComponents[i];
-                        break;
-                    }
-                }
+            // Loop through the selectors
+            for ( let i = 0; i < selectors.length; i++ ) {
+                // Check if any of the options can be found in the availableComponents
+                component = availableComponents.find((comp) => comp.selectComponent.selector.toLowerCase() === selectors[i]);
+                // If a usable component is found, break the for-loop
+                if (typeof component !== 'undefined') { break; }
             }
 
-            // Based on what we retrieved in the previous step we now get the component out of the ComponentFactory
-            const compFactory = this.cfr.resolveComponentFactory(component);
-            // Using the above we now use the 'ViewContainerRef' to get the Component in our DOM
-            // We also store the component in our 'currentComponent' if we need to destroy it.
-            this.currentComponent = this.vcr.createComponent(compFactory);
-            // Lastly we pass the resolved data to the component
-            this.currentComponent.instance.data = this.componentData;
+            if (typeof component !== 'undefined') {
+                // Based on what we retrieved in the previous step we now get the component out of the ComponentFactory
+                const compFactory = this.cfr.resolveComponentFactory(component);
+                // Using the above we now use the 'ViewContainerRef' to get the Component in our DOM
+                // We also store the component in our 'currentComponent' if we need to destroy it.
+                this.currentComponent = this.vcr.createComponent(compFactory);
+                // Lastly we pass the resolved data to the component
+                this.currentComponent.instance.data = this.componentData;
+            } else {
+                console.log('there was no component found');
+            }
         }
     }
 

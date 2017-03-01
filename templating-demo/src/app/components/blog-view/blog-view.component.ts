@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Dynamic } from '../../dynamic/dynamic';
 
 @Component({
-  selector: 'app-view',
+  selector: 'app-blog-view',
   templateUrl: './blog-view.component.html'
 })
 export class BlogViewComponent implements OnInit {

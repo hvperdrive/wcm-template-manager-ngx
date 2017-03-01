@@ -3,15 +3,15 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Dynamic } from '../../dynamic/dynamic';
 
 @Component({
-  selector: 'app-faq-view',
-  templateUrl: './faq-view.component.html'
+  selector: 'app-view',
+  templateUrl: './view.component.html'
 })
-export class FAQViewComponent implements OnInit {
+export class ViewComponent implements OnInit {
     // Add a new selector to the component using 'Dynamic'
     // Make it static so it's available for our 'dynamic-load' component
     static selectComponent: Dynamic = {
         // This selector will be used to cross-reference the possibilities to
-        selector: 'view-faq'
+        selector: 'view'
     };
     @Input()
     data: any;
