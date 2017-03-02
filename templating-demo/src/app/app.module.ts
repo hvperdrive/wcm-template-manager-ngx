@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-// import { DynamicLoadModule } from 'wcm-template-manager-ng2';
+import { DynamicLoadModule } from 'wcm-template-manager-ng2';
 import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '@angular/material';
@@ -42,7 +42,7 @@ const dynamicComponents = [
         FormsModule,
         HttpModule,
         // Add the components to the module for dynamic loading
-        DynamicLoadModule.forRoot(dynamicComponents),
+        DynamicLoadModule,
         // In the routing, point paths which need dynamic templating to the DataComponent
         RouterModule.forRoot([
             {

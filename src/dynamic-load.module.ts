@@ -3,6 +3,8 @@ import { DynamicLoadService } from './dynamic-load.service';
 
 import { DynamicLoadComponent } from './dynamic-load.component';
 
+export * from './dynamic-load.service';
+
 // We use an exported function to prevent AoT complications when using the DynamicLoadService in forRoot()
 export function DynamicLoadFactory(cmps) {
     return new DynamicLoadService(cmps);
