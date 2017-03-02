@@ -1,5 +1,6 @@
 # npmignore
 templating-demo/
+index.ts
 typings/
 .gitignore
 gulpfile.js

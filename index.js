@@ -1,3 +1,5 @@
-exports.DynamicLoadComponent = require('./lib/dynamic-load.component').DynamicLoadComponent;
-
-exports.DynamicLoadModule = require('./lib/dynamic-load.module').DynamicLoadModule;
+"use strict";
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+__export(require('./lib/dynamic-load.module'));
