@@ -1,1 +1,1 @@
-exports.DynamicLoadModule = require('./lib/dynamic-load.module').DynamicLoadModule;
+export * from './lib/dynamic-load.module';

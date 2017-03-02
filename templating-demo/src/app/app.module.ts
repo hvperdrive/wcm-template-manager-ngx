@@ -27,7 +27,7 @@ import { PageService } from './services/page.service';
 import { PageResolver } from './services/page.resolver';
 
 // Bundle the components in an array, just for convenience
-const dynamicComponents = [
+export const dynamicComponents = [
     BlogComponent,
     BlogpostComponent,
     FAQComponent,

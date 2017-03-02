@@ -25,7 +25,7 @@
     "hammerjs": "^2.0.8",
     "rxjs": "^5.1.0",
     "typings": "^2.1.0",
-    "wcm-template-manager-ng2": "git+ssh://git@github.com/hvperdrive/wcm-template-manager-ng2.git#v1.0.6",
+    "wcm-template-manager-ng2": "git+ssh://git@github.com/hvperdrive/wcm-template-manager-ng2.git#v1.0.1",
     "zone.js": "^0.7.6"
   },
   "devDependencies": {
