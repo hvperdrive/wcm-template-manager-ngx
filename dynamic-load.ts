@@ -1,9 +1,9 @@
 import { NgModule, OpaqueToken, ANALYZE_FOR_ENTRY_COMPONENTS, Inject } from '@angular/core';
-import { DynamicLoadService } from './dynamic-load.service';
+import { DynamicLoadService } from './lib/dynamic-load.service';
 
-import { DynamicLoadComponent } from './dynamic-load.component';
+import { DynamicLoadComponent } from './lib/dynamic-load.component';
 
-export * from './dynamic-load.service';
+export * from './lib/dynamic-load.service';
 
 // We use an exported function to prevent AoT complications when using the DynamicLoadService in forRoot()
 export function DynamicLoadFactory(cmps) {

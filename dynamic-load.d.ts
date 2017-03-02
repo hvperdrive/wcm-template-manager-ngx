@@ -1,5 +1,6 @@
 import { OpaqueToken, Inject } from '@angular/core';
-import { DynamicLoadService } from './dynamic-load.service';
+import { DynamicLoadService } from './lib/dynamic-load.service';
+export * from './lib/dynamic-load.service';
 export declare function DynamicLoadFactory(cmps: any): DynamicLoadService;
 export declare class DynamicLoadModule {
     static forRoot(components: any[]): {

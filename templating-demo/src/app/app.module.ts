@@ -42,7 +42,7 @@ const dynamicComponents = [
         FormsModule,
         HttpModule,
         // Add the components to the module for dynamic loading
-        DynamicLoadModule,
+        DynamicLoadModule.forRoot(dynamicComponents),
         // In the routing, point paths which need dynamic templating to the DataComponent
         RouterModule.forRoot([
             {
