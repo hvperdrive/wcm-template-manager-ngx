@@ -5,7 +5,7 @@ var merge = require('merge2');
 var tsConfig = require('./tsconfig.json');
 
 function transpile() {
-    var tResult = gulp.src(['./dynamic-load.module.ts'])
+    var tResult = gulp.src(['./src/**/*.ts'])
         .pipe(embed())
         .pipe(ts(tsConfig.compilerOptions));
 

@@ -2,7 +2,7 @@
   "name": "wcm-template-manager-ng2",
   "version": "1.0.0",
   "description": "WCM front-end template rendering for Angular2",
-  "main": "dynamic-load.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hvperdrive/wcm-template-manager-ng2.git"
