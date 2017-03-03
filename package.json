@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@angular/cli": "1.0.0-beta.32.3",
-    "@angular/compiler-cli": "^2.4.0",
+    "@angular/compiler-cli": "^2.4.9",
     "codelyzer": "^3.0.0-beta.0",
     "gulp": "^3.9.1",
     "gulp-angular2-embed-templates": "^2.2.1",

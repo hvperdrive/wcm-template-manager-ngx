@@ -22,4 +22,4 @@ function transpile() {
     ]);
 }
 
-gulp.task('tsc', transpile)
+gulp.task('tsc', transpile);

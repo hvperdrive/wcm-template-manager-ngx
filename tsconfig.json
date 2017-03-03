@@ -13,9 +13,9 @@
         ]
     },
     "files": [
-        "./lib/dynamic-load.component.d",
-        "./lib/dynamic-load.service.d",
-        "./lib/dynamic-load.module.d",
-        "./lib/dynamic.d"
+        "./src/dynamic-load.module.ts",
+        "./src/dynamic-load.component.ts",
+        "./src/dynamic-load.service.ts",
+        "./src/dynamic.ts"
     ]
 }
