@@ -11,5 +11,11 @@
             "es2015",
             "dom"
         ]
-    }
+    },
+    "files": [
+        "./lib/dynamic-load.component.d",
+        "./lib/dynamic-load.service.d",
+        "./lib/dynamic-load.module.d",
+        "./lib/dynamic.d"
+    ]
 }
