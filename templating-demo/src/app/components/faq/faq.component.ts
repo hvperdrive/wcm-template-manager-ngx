@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 // Import the Dynamic class
-import { Dynamic } from '../../dynamic/dynamic';
+import { Dynamic } from 'wcm-template-manager-ng2';
 
 @Component({
   selector: 'app-blog',

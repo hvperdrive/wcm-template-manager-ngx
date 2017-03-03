@@ -1,34 +1,38 @@
 {
-  "name": "wcm-template-manager-ng2",
-  "version": "1.0.4",
-  "description": "WCM front-end template rendering for Angular2",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hvperdrive/wcm-template-manager-ng2.git"
-  },
-  "author": "District01",
-  "homepage": "https://github.com/hvperdrive/wcm-template-manager-ng2#readme",
-  "dependencies": {
-    "@angular/common": "^2.4.0",
-    "@angular/compiler": "^2.4.0",
-    "@angular/core": "^2.4.0",
-    "core-js": "^2.4.1",
-    "rxjs": "^5.1.0",
-    "zone.js": "^0.7.6",
-    "typings": "^2.1.0"
-  },
-  "devDependencies": {
-    "@angular/cli": "1.0.0-beta.32.3",
-    "@angular/compiler-cli": "^2.4.9",
-    "codelyzer": "^3.0.0-beta.0",
-    "gulp": "^3.9.1",
-    "gulp-angular2-embed-templates": "^2.2.1",
-    "gulp-typescript": "^3.1.5",
-    "merge2": "^1.0.3",
-    "rimraf": "^2.6.1",
-    "systemjs": "^0.20.9",
-    "tslint": "^4.5.1",
-    "typescript": "~2.0.0"
-  }
+    "name": "wcm-template-manager-ng2",
+    "version": "1.0.4",
+    "description": "WCM front-end template rendering for Angular2",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hvperdrive/wcm-template-manager-ng2.git"
+    },
+    "author": "District01",
+    "homepage": "https://github.com/hvperdrive/wcm-template-manager-ng2#readme",
+    "dependencies": {
+        "@angular/common": "^2.4.0",
+        "@angular/compiler": "^2.4.0",
+        "@angular/core": "^2.4.0",
+        "core-js": "^2.4.1",
+        "rxjs": "^5.1.0",
+        "zone.js": "^0.7.6",
+        "typings": "^2.1.0"
+    },
+    "devDependencies": {
+        "@angular/cli": "1.0.0-beta.32.3",
+        "@angular/compiler-cli": "^2.4.9",
+        "codelyzer": "^3.0.0-beta.0",
+        "gulp": "^3.9.1",
+        "gulp-angular2-embed-templates": "^2.2.1",
+        "gulp-typescript": "^3.1.5",
+        "merge2": "^1.0.3",
+        "rimraf": "^2.6.1",
+        "systemjs": "^0.20.9",
+        "tslint": "^4.5.1",
+        "typescript": "~2.0.0"
+    },
+    "scripts": {
+        "create-lib": "node_modules/.bin/ngc",
+        "compile-index": "gulp compile-index",
+    }
 }
