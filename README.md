@@ -28,13 +28,13 @@ Let's say you need the blog view. This module will look for the `blog-view.compo
 You can install the module through npm the following way:
 
 ```
-npm install git+ssh://git@github.com/hvperdrive/wcm-template-manager-ng2.git#v1.0.8 --save
+npm install git+ssh://git@github.com/hvperdrive/wcm-template-manager-ng2.git#v1.0.0 --save
 ```
 
 Note that the version number should correspond with the version you would like to use. If you're not sure, just use [the latest version](https://github.com/hvperdrive/wcm-template-manager-ng2/releases).
 
 ### Add to your project
-In your `app.module` file, import the components you want to be able to load dynamically. Next create and array to store them in, this is more convenient since you need to add them in two places.
+In your `app.module` file, import the components you want to be able to load dynamically. Next create an array to store them in, this is more convenient since you need to add them in two places.
 
 ```javascript
 import { BlogComponent } from './components/blog/blog.component';
@@ -57,7 +57,7 @@ const dynamicComponents = [
 
 Next add the `DynamicLoadModule` to your module and pass the array into it.
 
-Also add the array to your declarations.
+Don't forget to add the array to your declarations as well.
 
 ```javascript
 @ngModule({
@@ -76,14 +76,14 @@ Also add the array to your declarations.
 ```
 
 ## Use
-You can use this module in two different ways one is through routing, the other is directly in a component's template.
+You can use this module in two different ways, one is through routing, the other is directly in a component's template.
 
 ### Through routing
-If you want to use the module this way there are a few things you are going to need to make it work.
+If you want to use the module this way there are a few things you are going to need to setup to make it work.
 
 First create a service to get the data and a resolver to resolve it to the route.
 
-An example of a service for retrieving the content:
+> An example of a service for retrieving the content:
 
 ```javascript
 import { Injectable } from '@angular/core';
@@ -105,7 +105,7 @@ export class ContentService {
 }
 ```
 
-The resolver:
+> The resolver:
 
 ```javascript
 import { Injectable } from '@angular/core';
@@ -135,9 +135,9 @@ export class ContentResolver implements Resolve<any[]> {
 }
 ```
 
-Next, we need a component to point the route to and who will push the data into this module's `app-dynamic-load` component.
+Next, we need a component to point the route towards and which will push the data into this module's `app-dynamic-load` component.
 
-This component can look like this:
+> This component can look like this:
 
 ```javascript
 import { Component } from '@angular/core';
@@ -168,6 +168,7 @@ export class DataComponent {
 ```
 
 Finally we setup the route in our `app.module`:
+> For example:
 
 ```javascript
 @ngModule({
@@ -186,7 +187,7 @@ Finally we setup the route in our `app.module`:
 })
 ```
 
-Don't forget to import the RouterModule and the new DataComponent as well as import the service and resolver and adding them to your module's providers.
+**Don't forget** to import the RouterModule and the new DataComponent, as well as import the service and resolver and adding both to your module's providers.
 
 ### As a component in your component
 This method can be used if your want to, for example, get a view's component into your current component.
@@ -201,7 +202,7 @@ Let's say we have a homepage with the `last_three_blogposts` view in it, you alr
 ## Dynamic Components
 The module needs a custom selector to be able to make a selection in the components you provide.
 
-To be able to do this import the type `Dynamic` from the module by adding the following to your component:
+To be able to do this, import the type `Dynamic` from the module by adding the following to your component:
 
 ```javascript
 import { Dynamic } from 'wcm-template-manager-ng2';
@@ -210,6 +211,8 @@ import { Dynamic } from 'wcm-template-manager-ng2';
 Afterworths add the selector to your component as so:
 
 ```javascript
+// Add a new selector to the component using 'Dynamic'
+// Make it static so it's available for our 'dynamic-load' component
 static selectComponent: Dynamic = {
 	// This selector will be used to cross-reference the possibilities to
 	selector: 'page-blog'
@@ -247,7 +250,7 @@ export class BlogComponent implements OnInit {
 ```
 
 ## More information
-To see a working example you can take a look in [the demo project](https://github.com/hvperdrive/wcm-template-manager-ng2/tree/develop/templating-demo).
+To see a working example you can take a look at the [the demo project](https://github.com/hvperdrive/wcm-template-manager-ng2/tree/develop/templating-demo).
 
 ## Development for this module
 To build a new version of this module run the following commands.
@@ -264,7 +267,7 @@ After that compile the `index` file.
 npm run compile-index
 ```
 
-Now commit and push your project to github and create a new version.
+Now commit and push your project to github and create a new version. (Don't forget to update the version in `package.json`)
 
 ```
 git tag vX.X.X
