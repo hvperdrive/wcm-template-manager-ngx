@@ -7,6 +7,10 @@
         "type": "git",
         "url": "git+https://github.com/hvperdrive/wcm-template-manager-ng2.git"
     },
+    "scripts": {
+        "create-lib": "node_modules/.bin/ngc",
+        "compile-index": "gulp compile-index"
+    },
     "author": "District01",
     "homepage": "https://github.com/hvperdrive/wcm-template-manager-ng2#readme",
     "dependencies": {
@@ -30,9 +34,5 @@
         "systemjs": "^0.20.9",
         "tslint": "^4.5.1",
         "typescript": "~2.0.0"
-    },
-    "scripts": {
-        "create-lib": "node_modules/.bin/ngc",
-        "compile-index": "gulp compile-index",
     }
 }
