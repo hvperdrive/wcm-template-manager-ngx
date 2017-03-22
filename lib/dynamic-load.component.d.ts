@@ -4,6 +4,7 @@ export declare class DynamicLoadComponent implements OnChanges, OnDestroy {
     private cfr;
     private dynamicLoadService;
     componentData: any;
+    type: string;
     private currentComponent;
     constructor(vcr: any, cfr: any, dynamicLoadService: any);
     ngOnChanges(): boolean;

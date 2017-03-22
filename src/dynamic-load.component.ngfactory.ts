@@ -23,11 +23,13 @@ export class Wrapper_DynamicLoadComponent {
   /*private*/ _changed:boolean;
   /*private*/ _changes:{[key: string]:any};
   /*private*/ _expr_0:any;
+  /*private*/ _expr_1:any;
   constructor(p0:any,p1:any,p2:any) {
     this._changed = false;
     this._changes = {};
     this.context = new import0.DynamicLoadComponent(p0,p1,p2);
     this._expr_0 = import1.UNINITIALIZED;
+    this._expr_1 = import1.UNINITIALIZED;
   }
   ngOnDetach(view:import2.AppView<any>,componentView:import2.AppView<any>,el:any):void {
   }
@@ -40,6 +42,14 @@ export class Wrapper_DynamicLoadComponent {
       this.context.componentData = currValue;
       this._changes['componentData'] = new import1.SimpleChange(this._expr_0,currValue);
       this._expr_0 = currValue;
+    }
+  }
+  check_type(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
+    if ((forceUpdate || import3.checkBinding(throwOnChange,this._expr_1,currValue))) {
+      this._changed = true;
+      this.context.type = currValue;
+      this._changes['type'] = new import1.SimpleChange(this._expr_1,currValue);
+      this._expr_1 = currValue;
     }
   }
   ngDoCheck(view:import2.AppView<any>,el:any,throwOnChange:boolean):boolean {
@@ -102,8 +112,8 @@ class View_DynamicLoadComponent_Host0 extends import2.AppView<any> {
   }
 }
 export const DynamicLoadComponentNgFactory:import9.ComponentFactory<import0.DynamicLoadComponent> = new import9.ComponentFactory<import0.DynamicLoadComponent>('app-dynamic-load',View_DynamicLoadComponent_Host0,import0.DynamicLoadComponent);
-const styles_DynamicLoadComponent:any[] = ([] as any[]);
-var renderType_DynamicLoadComponent:import4.RenderComponentType = import3.createRenderComponentType('',0,import5.ViewEncapsulation.None,styles_DynamicLoadComponent,{});
+const styles_DynamicLoadComponent:any[] = ['[_nghost-%COMP%] { display: block; }'];
+var renderType_DynamicLoadComponent:import4.RenderComponentType = import3.createRenderComponentType('',0,import5.ViewEncapsulation.Emulated,styles_DynamicLoadComponent,{});
 export class View_DynamicLoadComponent0 extends import2.AppView<import0.DynamicLoadComponent> {
   constructor(viewUtils:import3.ViewUtils,parentView:import2.AppView<any>,parentIndex:number,parentElement:any) {
     super(View_DynamicLoadComponent0,renderType_DynamicLoadComponent,import7.ViewType.COMPONENT,viewUtils,parentView,parentIndex,parentElement,import8.ChangeDetectorStatus.CheckAlways);
