@@ -5,12 +5,11 @@
  */
  /* tslint:disable */
 
-import * as import0 from '@angular/core/src/linker/ng_module_factory';
+import * as import0 from '../@angular/core';
 import * as import1 from './dynamic-load.module';
-import * as import2 from '@angular/core/src/di/injector';
-class DynamicLoadModuleInjector extends import0.NgModuleInjector<import1.DynamicLoadModule> {
+class DynamicLoadModuleInjector extends import0.ɵNgModuleInjector<import1.DynamicLoadModule> {
   _DynamicLoadModule_0:import1.DynamicLoadModule;
-  constructor(parent:import2.Injector) {
+  constructor(parent:import0.Injector) {
     super(parent,([] as any[]),([] as any[]));
   }
   createInternal():import1.DynamicLoadModule {
@@ -24,4 +23,5 @@ class DynamicLoadModuleInjector extends import0.NgModuleInjector<import1.Dynamic
   destroyInternal():void {
   }
 }
-export const DynamicLoadModuleNgFactory:import0.NgModuleFactory<import1.DynamicLoadModule> = new import0.NgModuleFactory(DynamicLoadModuleInjector,import1.DynamicLoadModule);
+export const DynamicLoadModuleNgFactory:import0.NgModuleFactory<import1.DynamicLoadModule> = new import0.NgModuleFactory<any>(DynamicLoadModuleInjector,import1.DynamicLoadModule);
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL2hvbWUvamVyb2VuLXdvcmsvRG9jdW1lbnRzL0Rpc3RyaWN0MDEvUHJvamVjdHMvQWNQYWFTIENNUy9oZWxwZXJzL3djbS10ZW1wbGF0ZS1tYW5hZ2VyLW5nMi5naXQvc3JjL2R5bmFtaWMtbG9hZC5tb2R1bGUubmdmYWN0b3J5LnRzIiwidmVyc2lvbiI6Mywic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibmc6Ly8vaG9tZS9qZXJvZW4td29yay9Eb2N1bWVudHMvRGlzdHJpY3QwMS9Qcm9qZWN0cy9BY1BhYVMgQ01TL2hlbHBlcnMvd2NtLXRlbXBsYXRlLW1hbmFnZXItbmcyLmdpdC9zcmMvZHluYW1pYy1sb2FkLm1vZHVsZS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIgIl0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7OyJ9

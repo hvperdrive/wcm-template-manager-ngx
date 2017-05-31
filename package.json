@@ -33,6 +33,6 @@
         "rimraf": "^2.6.1",
         "systemjs": "^0.20.9",
         "tslint": "^4.5.1",
-        "typescript": "~2.0.0"
+        "typescript": "~2.2.2"
     }
 }
