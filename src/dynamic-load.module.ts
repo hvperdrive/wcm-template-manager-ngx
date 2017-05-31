@@ -8,7 +8,7 @@ export function DynamicLoadFactory(cmps) {
     return new DynamicLoadService(cmps);
 }
 
-export const ENTRIES = new InjectionToken<Array<Component>>("ENTRIES");
+export const ENTRIES = new InjectionToken<Array<Component>>('ENTRIES');
 
 @NgModule({
     declarations: [
