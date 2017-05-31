@@ -1,4 +1,4 @@
-import { NgModule, OpaqueToken, ANALYZE_FOR_ENTRY_COMPONENTS, Inject } from '@angular/core';
+import { NgModule, Component, InjectionToken, ANALYZE_FOR_ENTRY_COMPONENTS, Inject } from '@angular/core';
 import { DynamicLoadService } from './dynamic-load.service';
 
 import { DynamicLoadComponent } from './dynamic-load.component';
@@ -7,6 +7,8 @@ import { DynamicLoadComponent } from './dynamic-load.component';
 export function DynamicLoadFactory(cmps) {
     return new DynamicLoadService(cmps);
 }
+
+export const ENTRIES = new InjectionToken<Array<Component>>("ENTRIES");
 
 @NgModule({
     declarations: [
@@ -31,7 +33,7 @@ export class DynamicLoadModule {
             {
                 // The second provider creates the token 'Entries'
                 // This is needed because 'ANALYZE_FOR_ENTRY_COMPONENTS' is not part of the dependency injection tree
-                provide: 'ENTRIES',
+                provide: ENTRIES,
                 useValue: components
             },
             {
@@ -39,7 +41,7 @@ export class DynamicLoadModule {
                 // This is were we need the exported function 'DynamicLoadFactory' to prevent AoT problems
                 provide: DynamicLoadService,
                 useFactory: DynamicLoadFactory,
-                deps: [[new Inject('ENTRIES')]]
+                deps: [[new Inject(ENTRIES)]]
             }]
         };
     }
