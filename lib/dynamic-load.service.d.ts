@@ -4,4 +4,6 @@ export declare class DynamicLoadService {
     getViewComponents(): any;
     getPartialComponents(): any;
     getContentComponents(): any;
+    selectComponent(type: string, data: any): boolean;
+    private _findComponent(availableComponents, data, checks);
 }

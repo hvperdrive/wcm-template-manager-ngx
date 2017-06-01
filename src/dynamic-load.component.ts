@@ -31,45 +31,8 @@ export class DynamicLoadComponent implements OnChanges, OnDestroy {
         // This way we can destroy it before loading a new one
         if (typeof this.currentComponent !== 'undefined') { this.currentComponent.destroy(); }
 
-        let     availableComponents = [],
-                selectedComponent;
-
-        if (!this.componentData) {
-            return;
-        }
-
-        // First we divide the componentData to create a couple scenarios
-        if (this.componentData.err !== null && this.type === 'view') {
-            // The first one is if we have data for a 'view'
-            availableComponents = this.dynamicLoadService.getViewComponents();
-                // tslint:disable max-line-length
-            selectedComponent = availableComponents.find((comp) => comp.selectComponent.viewReference === this.componentData.viewReference);
-            if (typeof selectedComponent === 'undefined') { selectedComponent = availableComponents.find((comp) => comp.selectComponent.viewType === this.componentData.viewType); }
-            if (typeof selectedComponent === 'undefined') { selectedComponent = availableComponents.find((comp) => comp.selectComponent.contentType === this.componentData.contentType); }
-            if (typeof selectedComponent === 'undefined') { selectedComponent = availableComponents.find((comp) => comp.selectComponent.fallback === true); }
-                // tslint:enable max-line-length
-        } else if (this.componentData.err !== null && this.type === 'partial') {
-            // The second one is if we have data for 'partial'
-            availableComponents = this.dynamicLoadService.getPartialComponents();
-                // tslint:disable max-line-length
-            selectedComponent = availableComponents.find((comp) => comp.selectComponent.safeLabel === this.componentData.meta.safeLabel);
-            if (typeof selectedComponent === 'undefined') { selectedComponent = availableComponents.find((comp) => comp.selectComponent.contentType === this.componentData.meta.contentType); }
-            if (typeof selectedComponent === 'undefined') { selectedComponent = availableComponents.find((comp) => comp.selectComponent.fallback === true); }
-                // tslint:enable max-line-length
-        } else if (this.componentData.err !== null && this.type === 'content') {
-            // The third one is if we have data for 'content'
-            availableComponents = this.dynamicLoadService.getContentComponents();
-                // tslint:disable max-line-length
-            selectedComponent = availableComponents.find((comp) => comp.selectComponent.slug === this.componentData.meta.slug);
-            if (typeof selectedComponent === 'undefined') { selectedComponent = availableComponents.find((comp) => comp.selectComponent.safeLabel === this.componentData.meta.safeLabel); }
-            if (typeof selectedComponent === 'undefined') { selectedComponent = availableComponents.find((comp) => comp.selectComponent.contentType === this.componentData.meta.contentType); }
-            if (typeof selectedComponent === 'undefined') { selectedComponent = availableComponents.find((comp) => comp.selectComponent.fallback === true); }
-                // tslint:enable max-line-length
-        } else {
-            // If it's none of the above, it's data we can't process so we just return false
-            console.log('Please provide the type attribute to let the module know to load a view, partial or content');
-            return false;
-        }
+        // Get component based on the data.
+        const selectedComponent = this.dynamicLoadService.selectedComponent(this.type, this.componentData);
 
         // After checking for a component which matches the criteria, render it
         if (typeof selectedComponent !== 'undefined') {
