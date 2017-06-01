@@ -3,19 +3,19 @@ export class DynamicLoadService {
 
     public getViewComponents() {
         return this.components.filter((comp) => {
-            return comp.selectComponent.type === 'view' ? true : false ;
+            return comp && comp.selectComponent && comp.selectComponent.type === 'view' ? true : false ;
         });
     }
 
     public getPartialComponents() {
         return this.components.filter((comp) => {
-            return comp.selectComponent.type === 'partial' ? true : false ;
+            return comp && comp.selectComponent && comp.selectComponent.type === 'partial' ? true : false ;
         });
     }
 
     public getContentComponents() {
         return this.components.filter((comp) => {
-            return comp.selectComponent.type === 'content' ? true : false ;
+            return comp && comp.selectComponent && comp.selectComponent.type === 'content' ? true : false ;
         });
     }
 }

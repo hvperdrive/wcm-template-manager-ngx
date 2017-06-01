@@ -34,6 +34,10 @@ export class DynamicLoadComponent implements OnChanges, OnDestroy {
         let     availableComponents = [],
                 selectedComponent;
 
+        if (!this.componentData) {
+            return;
+        }
+
         // First we divide the componentData to create a couple scenarios
         if (this.componentData.err !== null && this.type === 'view') {
             // The first one is if we have data for a 'view'
