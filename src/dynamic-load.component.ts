@@ -32,10 +32,10 @@ export class DynamicLoadComponent implements OnChanges, OnDestroy {
         if (typeof this.currentComponent !== 'undefined') { this.currentComponent.destroy(); }
 
         // Get component based on the data.
-        const selectedComponent = this.dynamicLoadService.selectedComponent(this.type, this.componentData);
+        const selectedComponent = this.dynamicLoadService.selectComponent(this.type, this.componentData);
 
         // After checking for a component which matches the criteria, render it
-        if (typeof selectedComponent !== 'undefined') {
+        if (selectedComponent) {
             // Based on what we retrieved in the previous step we now get the component out of the ComponentFactory
             const compFactory = this.cfr.resolveComponentFactory(selectedComponent);
             // Using the above we now use the 'ViewContainerRef' to get the Component in our DOM

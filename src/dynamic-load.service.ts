@@ -43,21 +43,21 @@ export class DynamicLoadService {
 
     private _findComponent(availableComponents, data, checks): boolean {
        return availableComponents.find(comp => !!checks.find(check => {
-            if (comp.selectComponent) {
+            if (!comp.selectComponent) {
                 return false;
             }
 
             switch (check) {
                 case 'viewReference':
-                    return data && !!comp.selectComponent.viewReference === data.viewReference;
+                    return data && comp.selectComponent.viewReference === data.viewReference;
                 case 'viewType':
-                    return data && !!comp.selectComponent.viewType === data.viewType;
+                    return data && comp.selectComponent.viewType === data.viewType;
                 case 'contentType':
-                    return data && !!comp.selectComponent.contentType === data.contentType;
+                    return data && comp.selectComponent.contentType === data.contentType;
                 case 'meta.contentType':
-                    return data && data.meta && !!comp.selectComponent.contentType === data.meta.contentType;
+                    return data && data.meta && comp.selectComponent.contentType === data.meta.contentType;
                 case 'safeLabel':
-                    return data && data.meta && !!comp.selectComponent.safeLabel === data.meta.safeLabel;
+                    return data && data.meta && comp.selectComponent.safeLabel === data.meta.safeLabel;
                 case 'fallback':
                 default:
                     return !!comp.selectComponent.fallback;
