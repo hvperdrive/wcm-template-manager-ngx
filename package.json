@@ -1,18 +1,18 @@
 {
-    "name": "wcm-template-manager-ng2",
+    "name": "wcm-template-manager-ngx",
     "version": "4.0.0",
-    "description": "WCM front-end template rendering for Angular2",
+    "description": "WCM front-end template rendering for Angular",
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/hvperdrive/wcm-template-manager-ng2.git"
+        "url": "git+https://github.com/hvperdrive/wcm-template-manager-ngx.git"
     },
     "scripts": {
         "create-lib": "node_modules/.bin/ngc",
         "compile-index": "gulp compile-index"
     },
     "author": "District01",
-    "homepage": "https://github.com/hvperdrive/wcm-template-manager-ng2#readme",
+    "homepage": "https://github.com/hvperdrive/wcm-template-manager-ngx#readme",
     "dependencies": {
         "@angular/common": "4.0.3",
         "@angular/compiler": "4.0.3",

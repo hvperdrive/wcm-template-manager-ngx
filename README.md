@@ -1,4 +1,4 @@
-# WCM Templates Module [ng2]
+# WCM Templates Module [ng4]
 
 ## What does this module do?
 This module makes it possible to load components dynamically based on the content provided. It does so without creating complications for AoT.
@@ -28,10 +28,10 @@ Let's say you need the blog view. This module will look for the `blog-view.compo
 You can install the module through npm the following way:
 
 ```
-npm install git+ssh://git@github.com/hvperdrive/wcm-template-manager-ng2.git#v1.0.0 --save
+npm install git+ssh://git@github.com/hvperdrive/wcm-template-manager-ngx.git#v4.0.0 --save
 ```
 
-Note that the version number should correspond with the version you would like to use. If you're not sure, just use [the latest version](https://github.com/hvperdrive/wcm-template-manager-ng2/releases).
+Note that the version number should correspond with the version you would like to use. If you're not sure, just use [the latest version](https://github.com/hvperdrive/wcm-template-manager-ngx/releases).
 
 ### Add to your project
 In your `app.module` file, import the components you want to be able to load dynamically. Next create an array to store them in, this is more convenient since you need to add them in two places.
@@ -97,12 +97,17 @@ export class ContentService {
         private http: Http
     ) {}
 
-    getContent(lang, contentType, content): Observable<any> {
-        const url = `http://localhost:4000/api/1.0.0/content/${content}/translated?lang=${lang}`;
+    getContentBySlug(lang, content): Observable<any> {
+        const url = `http://localhost:4000/api/1.0.0/content?slug=${content}&lang=${lang}&populate=true`;
+        return this.http.get(url).map((res) => res.json());
+    }
 
+    getContentByUUID(lang, content): Observable<any> {
+        const url = `http://localhost:4000/api/1.0.0/content?uuid=${content}&lang=${lang}&populate=true`;
         return this.http.get(url).map((res) => res.json());
     }
 }
+
 ```
 
 > The resolver:
@@ -115,22 +120,18 @@ import { ContentService } from './content.service';
 
 @Injectable()
 export class ContentResolver implements Resolve<any[]> {
-    // The ContentResolver is used in the routing, to resolve the data fron the ContentService
     constructor(
         private contentService: ContentService
     ) {}
 
     resolve(
-        // route & state are needed to get the language, contentType and content from the route
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<any[]> {
-        // Once the parameters are fetched, we use contentService.getContent() to get retrieve the correct content for this route
-        return this.contentService.getContent(
-            route.params['lang'],
-            route.params['contentType'],
-            route.params['content']
-        );
+		return this.contentService.getContentBySlug(
+			route.params['lang'],
+			route.params['content']
+		);
     }
 }
 ```
@@ -205,7 +206,7 @@ The module needs a custom selector to be able to make a selection in the compone
 To be able to do this, import the type `Dynamic` from the module by adding the following to your component:
 
 ```javascript
-import { Dynamic } from 'wcm-template-manager-ng2';
+import { Dynamic } from 'wcm-template-manager-ngx';
 ```
 
 Afterworths add the selector to your component as so:
@@ -224,7 +225,7 @@ In the bigger picture this would like this:
 ```javascript
 import { Component, Input, OnInit } from '@angular/core';
 // Import the Dynamic class
-import { Dynamic } from 'wcm-template-manager-ng2';
+import { Dynamic } from 'wcm-template-manager-ngx';
 
 @Component({
   selector: 'app-blog',
@@ -250,7 +251,7 @@ export class BlogComponent implements OnInit {
 ```
 
 ## More information
-To see a working example you can take a look at the [the demo project](https://github.com/hvperdrive/wcm-template-manager-ng2/tree/develop/templating-demo).
+To see a working example you can take a look at the [the demo project](https://github.com/hvperdrive/wcm-template-manager-ngx/tree/develop/templating-demo).
 
 ## Development for this module
 To build a new version of this module run the following commands.
