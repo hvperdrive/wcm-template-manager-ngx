@@ -1,2 +1,2 @@
-export * from './lib/dynamic-load.module';
-export * from './lib/dynamic';
+export * from './lib/src/dynamic-load.module';
+export * from './lib/src/dynamic';
