@@ -1,4 +1,4 @@
-# WcmTemplateManager
+# Wcm ngx modules
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
@@ -8,19 +8,29 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate library module-name` to generate a new module. Make sure to update the package name and version in the new folders `package.json`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build` to build all projects. The build artifacts will be stored in the `dist/` directory.
+
+To build a single project you can run `ng build project-name`. Use the `--prod` flag for a production build.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm run test` to execute all unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+To run the tests for a single project you can run `ng test project-name`.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Publishing
+
+To publish a project:
+
+1. update the version in the projects `package.json`
+1. build the project
+1. tag the release with `@wcm/ngx-[project]@[version]` (e.g. `@wcm/ngx-template-manager@6.0.0`)
+1. `cd` to the build folder (`/dist/[project]`)
+1. `npm publish`
 
 ## Further help
 
