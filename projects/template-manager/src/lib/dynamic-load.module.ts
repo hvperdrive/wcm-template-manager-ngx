@@ -2,10 +2,12 @@ import {
   ANALYZE_FOR_ENTRY_COMPONENTS,
   ModuleWithProviders,
   NgModule,
+  Type,
 } from '@angular/core';
 
 import { DynamicLoadComponent } from './dynamic-load.component';
 import { DYNAMIC_COMPONENTS } from './dynamic-load.conf';
+import { DynamicComponent } from './dynamic-load.types';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,7 @@ import { DYNAMIC_COMPONENTS } from './dynamic-load.conf';
   ]
 })
 export class DynamicLoadModule {
-  public static forRoot(components: any[]): ModuleWithProviders {
+  public static forChild(components: Type<DynamicComponent>[]): ModuleWithProviders {
     return {
       ngModule: DynamicLoadModule,
       providers: [{
@@ -32,6 +34,7 @@ export class DynamicLoadModule {
           // This is needed because 'ANALYZE_FOR_ENTRY_COMPONENTS' is not part of the dependency injection tree
           provide: DYNAMIC_COMPONENTS,
           useValue: components,
+          multi: true,
         },
       ],
     };

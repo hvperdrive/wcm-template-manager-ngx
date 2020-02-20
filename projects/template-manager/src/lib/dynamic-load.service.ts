@@ -9,8 +9,15 @@ import { DYNAMIC_COMPONENTS } from './dynamic-load.conf';
   providedIn: 'root',
 })
 export class DynamicLoadService {
+  private components: Type<DynamicComponent>[] = [];
+
   constructor(
-    @Inject(DYNAMIC_COMPONENTS) private components: Type<DynamicComponent>[]) {}
+    @Inject(DYNAMIC_COMPONENTS) components: Type<DynamicComponent>[][]) {
+      this.components = components.reduce((acc, curr) => [
+        ...acc,
+        ...curr,
+      ], []);
+    }
 
   public getViewComponents(): Type<DynamicComponent>[] {
     return this.components.filter((comp: Type<DynamicComponent>) => {
