@@ -1,23 +1,34 @@
 {
-    "compilerOptions": {
-        "declaration": true,
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
     "downlevelIteration": true,
-        "experimentalDecorators": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
     "importHelpers": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "outDir": "lib",
-        "sourceMap": true,
-        "target": "es2015",
-        "lib": [
-            "es2015",
-            "dom"
-        ]
-    },
-    "files": [
-        "./src/dynamic-load.module.ts",
-        "./src/dynamic-load.component.ts",
-        "./src/dynamic-load.service.ts",
-        "./src/dynamic.ts"
-    ]
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "template-manager": [
+        "dist/template-manager"
+      ],
+      "template-manager/*": [
+        "dist/template-manager/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
 }
