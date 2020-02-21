@@ -1,22 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { DynamicLoadModule } from 'template-manager';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { Components, DynamicComponents } from './components/index';
+import { HelloModule } from './hello/hello.module';
+import { SharedModule } from './shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    Components,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DynamicLoadModule.forRoot(DynamicComponents),
+    SharedModule,
+    HelloModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
