@@ -7,24 +7,23 @@ import {
   OnDestroy,
   ViewContainerRef,
   ChangeDetectorRef,
-  ViewChild,
 } from '@angular/core';
 
 import { DynamicLoadService } from './dynamic-load.service';
 
 @Component({
   selector: 'wcm-dynamic-load',
-  template: '<div #dynamicLoad></div>',
+  template: '',
   styles: [':host { display: block; }']
 })
 export class DynamicLoadComponent implements OnChanges, OnDestroy {
-  @ViewChild('dynamicLoad', { read: ViewContainerRef, static: false }) public vcr: ViewContainerRef;
   @Input() public componentData: any;
   @Input() public type: string;
 
   private currentComponent: any;
 
   constructor(
+    @Inject(ViewContainerRef) private vcr: ViewContainerRef,
     @Inject(ComponentFactoryResolver) private cfr: ComponentFactoryResolver,
     private dynamicLoadService: DynamicLoadService,
     private cdr: ChangeDetectorRef,
