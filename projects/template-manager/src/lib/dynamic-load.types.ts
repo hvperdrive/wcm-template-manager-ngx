@@ -19,8 +19,8 @@ export type WcmData = Record<string | number | symbol, any> & {
   meta?: {
     contentType?: string;
     safeLabel?: string;
+    slug?: string;
   };
-  slug?: string;
   viewReference?: string;
   viewType?: string;
 };

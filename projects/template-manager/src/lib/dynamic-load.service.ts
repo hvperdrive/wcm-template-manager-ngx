@@ -69,7 +69,7 @@ export class DynamicLoadService {
         case 'safeLabel':
           return data && data.meta && comp['selectComponent'].safeLabel === data.meta.safeLabel;
         case 'slug':
-          return data && comp['selectComponent'].slug === data.slug;
+          return data && data.meta && comp['selectComponent'].slug === data.meta.slug;
         case 'fallback':
         default:
           return !!comp['selectComponent'].fallback;
