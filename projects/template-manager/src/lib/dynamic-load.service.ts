@@ -1,6 +1,6 @@
 import { Inject, Injectable, Type } from '@angular/core';
 
-import { DynamicComponent, WcmData } from './dynamic-load.types';
+import { WcmData } from './dynamic-load.types';
 import { DYNAMIC_COMPONENTS } from './dynamic-load.conf';
 
 /* tslint:disable no-string-literal */
@@ -9,35 +9,35 @@ import { DYNAMIC_COMPONENTS } from './dynamic-load.conf';
   providedIn: 'root',
 })
 export class DynamicLoadService {
-  private components: Type<DynamicComponent>[] = [];
+  private components: Type<any>[] = [];
 
   constructor(
-    @Inject(DYNAMIC_COMPONENTS) components: Type<DynamicComponent>[][]) {
+    @Inject(DYNAMIC_COMPONENTS) components: Type<any>[][]) {
       this.components = components.reduce((acc, curr) => [
         ...acc,
         ...curr,
       ], []);
     }
 
-  public getViewComponents(): Type<DynamicComponent>[] {
-    return this.components.filter((comp: Type<DynamicComponent>) => {
+  public getViewComponents(): Type<any>[] {
+    return this.components.filter((comp: Type<any>) => {
       return comp && comp['selectComponent'] && comp['selectComponent'].type === 'view' ? true : false;
     });
   }
 
-  public getPartialComponents(): Type<DynamicComponent>[] {
-    return this.components.filter((comp: Type<DynamicComponent>) => {
+  public getPartialComponents(): Type<any>[] {
+    return this.components.filter((comp: Type<any>) => {
       return comp && comp['selectComponent'] && comp['selectComponent'].type === 'partial' ? true : false;
     });
   }
 
-  public getContentComponents(): Type<DynamicComponent>[] {
-    return this.components.filter((comp: Type<DynamicComponent>) => {
+  public getContentComponents(): Type<any>[] {
+    return this.components.filter((comp: Type<any>) => {
       return comp && comp['selectComponent'] && comp['selectComponent'].type === 'content' ? true : false;
     });
   }
 
-  public selectComponent(type: string, data: WcmData): Type<DynamicComponent> {
+  public selectComponent(type: string, data: WcmData): Type<any> {
     switch (type) {
       case 'view':
         return this._findComponent(this.getViewComponents(), data, ['viewReference', 'viewType', 'contentType', 'fallback']);
@@ -51,8 +51,8 @@ export class DynamicLoadService {
     }
   }
 
-  private _findComponent(availableComponents: Type<DynamicComponent>[], data: WcmData, checks: string[]): Type<DynamicComponent> {
-    return availableComponents.find((comp: Type<DynamicComponent>) => !!checks.find((check: string) => {
+  private _findComponent(availableComponents: Type<any>[], data: WcmData, checks: string[]): Type<any> {
+    return availableComponents.find((comp: Type<any>) => !!checks.find((check: string) => {
       if (!comp['selectComponent']) {
         return false;
       }

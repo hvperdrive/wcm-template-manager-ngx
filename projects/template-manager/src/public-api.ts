@@ -6,4 +6,4 @@ export { DynamicLoadComponent } from './lib/dynamic-load.component';
 export { DYNAMIC_COMPONENTS } from './lib/dynamic-load.conf';
 export { DynamicLoadModule } from './lib/dynamic-load.module';
 export { DynamicLoadService } from './lib/dynamic-load.service';
-export { Dynamic, DynamicComponent, WcmData } from './lib/dynamic-load.types';
+export { Dynamic, WcmData } from './lib/dynamic-load.types';

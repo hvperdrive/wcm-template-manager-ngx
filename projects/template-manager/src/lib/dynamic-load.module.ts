@@ -7,7 +7,6 @@ import {
 
 import { DynamicLoadComponent } from './dynamic-load.component';
 import { DYNAMIC_COMPONENTS } from './dynamic-load.conf';
-import { DynamicComponent } from './dynamic-load.types';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,7 @@ import { DynamicComponent } from './dynamic-load.types';
   }],
 })
 export class DynamicLoadModule {
-  public static forChild(components: Type<DynamicComponent>[]): ModuleWithProviders {
+  public static forChild(components: Type<any>[]): ModuleWithProviders {
     return {
       ngModule: DynamicLoadModule,
       providers: [{
