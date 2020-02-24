@@ -6,6 +6,7 @@ import {
   OnChanges,
   OnDestroy,
   ViewContainerRef,
+  ChangeDetectorRef,
 } from '@angular/core';
 
 import { DynamicLoadService } from './dynamic-load.service';
@@ -23,14 +24,15 @@ export class DynamicLoadComponent implements OnChanges, OnDestroy {
 
   constructor(
     // The 'ViewContainerRef' has the 'createComponent()' function we need to get the Component in our DOM
-    @Inject(ViewContainerRef) private vcr,
+    @Inject(ViewContainerRef) private vcr: ViewContainerRef,
     // The 'ComponentFactoryResolver' gets the component out of the ComponentFactory
     // This can only be done using the component's name
-    @Inject(ComponentFactoryResolver) private cfr,
+    @Inject(ComponentFactoryResolver) private cfr: ComponentFactoryResolver,
     // That's where our DynamicLoadService steps in
     // Thanks to the 'ENTRIES' we injected in it
     // .getComponents() now returns an array of all the components that we passed into the 'dynamic-load.module'
-    @Inject(DynamicLoadService) private dynamicLoadService
+    private dynamicLoadService: DynamicLoadService,
+    private cdr: ChangeDetectorRef,
   ) { }
 
   public ngOnChanges(): void {
@@ -52,6 +54,8 @@ export class DynamicLoadComponent implements OnChanges, OnDestroy {
       this.currentComponent = this.vcr.createComponent(compFactory);
       // Lastly we pass the resolved data to the component
       this.currentComponent.instance.data = this.componentData;
+
+      this.cdr.detectChanges();
     } else {
       console.log('there was no component found');
     }
