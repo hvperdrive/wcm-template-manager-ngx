@@ -15,7 +15,12 @@ import { DynamicComponent } from './dynamic-load.types';
   ],
   exports: [
     DynamicLoadComponent,
-  ]
+  ],
+  providers: [{
+    provide: DYNAMIC_COMPONENTS,
+    useValue: [],
+    multi: true,
+  }],
 })
 export class DynamicLoadModule {
   public static forChild(components: Type<DynamicComponent>[]): ModuleWithProviders {
